@@ -30,6 +30,12 @@ class Reversi:
         self.place(4, 4, checked = False)
         self.place(4, 3, checked = False)
     
+    def invert(self):
+        state = self.state_to_string()
+        TEMP = "_X_"
+        state = state.replace('"%s"'%WHITE, '"%s"'%TEMP).replace('"%s"'%BLACK, '"%s"'%WHITE).replace('"%s"'%TEMP, '"%s"'%BLACK)
+        self.state_from_string(state)
+
     def state_to_string(self):
         return json.dumps({
             "turn": self._turn,
